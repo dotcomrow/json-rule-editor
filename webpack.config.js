@@ -7,7 +7,7 @@ const packageJson = require('./package.json');
 const ExternalRemotesPlugin = require('external-remotes-plugin');
 
 module.exports = (env, arg) => ({
-  entry: ['./src/app.js', './src/sass/base.scss'],
+  // entry: ['./src/app.js', './src/sass/base.scss'],
   output: {
     filename: "main.bundle.js",
     path: path.resolve(__dirname, 'dist')
