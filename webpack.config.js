@@ -89,10 +89,6 @@ module.exports = (env, arg) => ({
               singleton: true,
               requiredVersion: packageJson.dependencies['react-dom'],
           },
-          bootstrap: {
-              singleton: true,
-              requiredVersion: packageJson.dependencies.bootstrap,
-          },
       }
   }),
   new ExternalRemotesPlugin()
