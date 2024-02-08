@@ -2,7 +2,9 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer-sunburst').BundleAnalyzerPlugin;
-
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const packageJson = require('./package.json');
+const ExternalRemotesPlugin = require('external-remotes-plugin');
 
 module.exports = (env, arg) => ({
   entry: ['./src/app.js', './src/sass/base.scss'],
@@ -67,6 +69,33 @@ module.exports = (env, arg) => ({
       filename: '[name].css',
       chunkFilename: '[id].css'
     }),
+    new ModuleFederationPlugin({
+      name: 'engine',
+      filename: 'remoteEntry.js',
+      exposes: {
+          './Editor': './src/Editor.js'
+      },
+      remotes: {
+          dtk: 'storybook@https://dtk.suncoast.systems/remoteEntry.js',
+          common: 'common@https://commonjs.suncoast.systems/remoteEntry.js',
+      },
+      shared: {
+          ...packageJson.dependencies,
+          react: {
+              singleton: true,
+              requiredVersion: packageJson.dependencies.react,
+          },
+          'react-dom': {
+              singleton: true,
+              requiredVersion: packageJson.dependencies['react-dom'],
+          },
+          bootstrap: {
+              singleton: true,
+              requiredVersion: packageJson.dependencies.bootstrap,
+          },
+      }
+  }),
+  new ExternalRemotesPlugin()
     /* new BundleAnalyzerPlugin({
         analyzerMode: 'static',
     }), */
