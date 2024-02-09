@@ -4,17 +4,18 @@ import React from 'react';
 import { render } from 'react-dom';
 import configureStore from './store';
 import { Provider } from 'react-redux';
+import "./sass/base.scss"
 import ApplicationContainer from './containers/app/app-container';
 
 
 const store = configureStore();
 
-const component = (Root) =>
-        render(<AppContainer>
+const component = (Root) => {
+        return(<AppContainer>
             <Provider store={store}>
                 <Root />
             </Provider>
-        </AppContainer>, document.getElementById('root'));
-
+        </AppContainer>);
+}
 
 export default component(ApplicationContainer);

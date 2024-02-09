@@ -18,16 +18,14 @@ const component = (Root) =>
         </AppContainer>, document.getElementById('root'));
 
 
+component(ApplicationContainer);
 
-let exp = null;
 if (module.hot) {
     module.hot.accept('./containers/app/app-container.js', () => {
-        exp = component(ApplicationContainer);
+    component(ApplicationContainer);
     });
-} else {
-    exp = component(ApplicationContainer);
 }
 
-export default exp;
+
 
 
