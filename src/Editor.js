@@ -10,12 +10,12 @@ import ApplicationContainer from './containers/app/app-container';
 
 const store = configureStore();
 
-const component = (Root) => {
+const component = () => {
         return(<AppContainer>
             <Provider store={store}>
-                <Root />
+                <ApplicationContainer />
             </Provider>
         </AppContainer>);
 }
 
-export default component(ApplicationContainer);
+export default component;

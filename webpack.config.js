@@ -14,12 +14,8 @@ module.exports = (env, arg) => ({
     filename: "[name].[contenthash].js",
     publicPath: "auto",
   },
-  devServer: {
-    // port: 8081,
-    historyApiFallback: true,
-  },
   optimization: {
-    minimize: false,
+    minimize: true,
     runtimeChunk: false,
     splitChunks: false,
   },
