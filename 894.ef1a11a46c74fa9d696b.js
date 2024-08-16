@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjson_rule_editor=self.webpackChunkjson_rule_editor||[]).push([[894],{53894:(t,n,e)=>{function r(t){return function(n){var e=n.dispatch,r=n.getState;return function(n){return function(u){return"function"==typeof u?u(e,r,t):n(u)}}}}e.r(n),e.d(n,{default:()=>o});var u=r();u.withExtraArgument=r;const o=u}}]);
